@@ -102,6 +102,6 @@ end)
 
 RegisterNetEvent("pb-boombox:client:deletetarget")
 AddEventHandler("pb-boombox:client:deletetarget", function(netid, id)
-    exports.ox_target:removeZone(targetList[id])
+    pb.deleteZone(targetList[id])
     targetList[id] = nil
 end)
