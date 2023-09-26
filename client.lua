@@ -2,7 +2,7 @@ local xSound = exports.xsound
 local targetList = {}
 
 local function PlaySong(musicId)
-    local input = lib.inputDialog('Definições Musica', {
+    local input = pb.inputDialog('Definições Musica', {
         {type = 'input', label = 'Link Música', required = true},
         {type = 'slider', label = 'Volume', required = true, min = 0, max = 100},
         {type = 'slider', label = 'Distância', required = true, min = 0, max = 200},
@@ -13,7 +13,7 @@ local function PlaySong(musicId)
 end
 
 local function ChangeSong(musicId)
-    local input = lib.inputDialog('Definições Musica', {
+    local input = pb.inputDialog('Definições Musica', {
         {type = 'slider', label = 'Volume', required = true, min = 0, max = 100},
         {type = 'slider', label = 'Distância', required = true, min = 0, max = 200},
       })
@@ -42,7 +42,7 @@ local function UpdateBoxTarget(netid, coords, id)
             onSelect = function()
                 pb.DeleteObjectNetwork(netid)
                 TriggerServerEvent("pb-boombox:server:removesound", netid, id)
-                lib.callback('pb:utils:addItem', false, function() end, "boombox", 1)
+                pb.callback('pb:utils:addItem', false, function() end, "boombox", 1)
             end,
         },
         {
