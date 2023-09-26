@@ -7,7 +7,7 @@ server_script 'server.lua'
 
 shared_script {
     'shared.lua',
-    '@ox_lib/init.lua',
+    '@pb_utils/init.lua',
 }
 
 dependencies {
