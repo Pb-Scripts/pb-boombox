@@ -47,6 +47,6 @@ AddEventHandler("pb-boombox:server:removesound", function(netid, id)
     boombox[id] = nil
 end)
 
-lib.callback.register('pb-boombox:getBoxes', function(source)
+pb.callback.register('pb-boombox:getBoxes', function(source)
     return boombox
 end)
