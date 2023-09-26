@@ -1,4 +1,3 @@
-local utils = exports['pb-utils']:GetUtils()
 local xSound = exports.xsound
 local targetList = {}
 
@@ -24,24 +23,24 @@ local function ChangeSong(musicId)
 end
 
 local function PlaceBoomBox()
-    local netid = utils.CreateObjectNetwork('prop_speaker_03', utils.FrontVector(PlayerPedId()), true)
+    local netid = pb.CreateObjectNetwork('prop_speaker_03', pb.FrontVector(PlayerPedId()), true)
     local obj = NetworkGetEntityFromNetworkId(netid)
     local obj_coords = GetEntityCoords(obj)
     local coords = vector3(obj_coords.x, obj_coords.y, obj_coords.z + 0.5)
     SetEntityHeading(obj, GetEntityHeading(PlayerPedId())+180)
     TriggerServerEvent("pb-boombox:server:updatetarget", netid, coords)
-    lib.callback('pb:utils:removeItem', false, function() end, "boombox", 1)
+    pb.callback('pb:utils:removeItem', false, function() end, "boombox", 1)
 end
 exports("PlaceBoomBox", PlaceBoomBox)
 
 local function UpdateBoxTarget(netid, coords, id)
-    local targetid = utils.addSphereTarget(coords, 0.8, {
+    local targetid = pb.addSphereTarget(coords, 0.8, {
         {
             name = "boombox_"..netid,
             icon = "fa-solid fa-circle-down",
             label = "Remover Coluna",
             onSelect = function()
-                utils.DeleteObjectNetwork(netid)
+                pb.DeleteObjectNetwork(netid)
                 TriggerServerEvent("pb-boombox:server:removesound", netid, id)
                 lib.callback('pb:utils:addItem', false, function() end, "boombox", 1)
             end,
