@@ -3,8 +3,10 @@
 ## Exports
 
 ```
-PlaceBoomBox() -> Place a boombox on ground
+PlaceBoomBox -> Place a boombox on ground
 ```
+(Line 109-112) Change this so you could for example receive the box item on box remove :)
+![code-snapshot2](https://github.com/Pbtm999/pb-boombox/assets/67477526/c8bb5fc0-199c-4ceb-857a-b07bef2aa306)
 
 ### Requirements
 
