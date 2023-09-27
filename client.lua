@@ -42,7 +42,7 @@ local function UpdateBoxTarget(netid, coords, id)
             onSelect = function()
                 pb.DeleteObjectNetwork(netid)
                 TriggerServerEvent("pb-boombox:server:removesound", netid, id)
-                pb.callback('pb:utils:addItem', false, function() end, "boombox", 1)
+                TriggerEvent("pb-boombox:client:OnBoxRemove")
             end,
         },
         {
@@ -104,4 +104,9 @@ RegisterNetEvent("pb-boombox:client:deletetarget")
 AddEventHandler("pb-boombox:client:deletetarget", function(netid, id)
     pb.deleteZone(targetList[id])
     targetList[id] = nil
+end)
+
+RegisterNetEvent("pb-boombox:client:OnBoxRemove")
+AddEventHandler("pb-boombox:client:OnBoxRemove", function(netid, id)
+    print("box removed :) Change this!")
 end)
