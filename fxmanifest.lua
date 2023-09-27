@@ -6,7 +6,8 @@ client_script 'client.lua'
 server_script 'server.lua'
 
 shared_script {
-    '@pb_utils/init.lua',
+    '@ox_lib/init.lua',
+    '@pb-utils/init.lua'
 }
 
 dependencies {
