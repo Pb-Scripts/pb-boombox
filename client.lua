@@ -2,10 +2,10 @@ local xSound = exports.xsound
 local targetList = {}
 
 local function PlaySong(musicId)
-    local input = pb.inputDialog('Definições Musica', {
-        {type = 'input', label = 'Link Música', required = true},
-        {type = 'slider', label = 'Volume', required = true, min = 0, max = 100},
-        {type = 'slider', label = 'Distância', required = true, min = 0, max = 200},
+    local input = pb.inputDialog(locale('music_def'), {
+        {type = 'input', label = locale('music_link'), required = true},
+        {type = 'slider', label = locale('volume'), required = true, min = 0, max = 100},
+        {type = 'slider', label = locale('distance'), required = true, min = 0, max = 200},
       })
     if input and input[1] and input[2] and input[3] then
         TriggerServerEvent("pb-boombox:server:playsound", musicId, input, GetEntityCoords(PlayerPedId()))
@@ -13,9 +13,9 @@ local function PlaySong(musicId)
 end
 
 local function ChangeSong(musicId)
-    local input = pb.inputDialog('Definições Musica', {
-        {type = 'slider', label = 'Volume', required = true, min = 0, max = 100},
-        {type = 'slider', label = 'Distância', required = true, min = 0, max = 200},
+    local input = pb.inputDialog(locale('music_def'), {
+        {type = 'slider', label = locale('volume'), required = true, min = 0, max = 100},
+        {type = 'slider', label = locale('distance'), required = true, min = 0, max = 200},
       })
     if input and input[1] and input[2] then
         TriggerServerEvent("pb-boombox:server:changestatussound", musicId, input)
@@ -38,7 +38,7 @@ local function UpdateBoxTarget(netid, coords, id)
         {
             name = "boombox_"..netid,
             icon = "fa-solid fa-circle-down",
-            label = "Remover Coluna",
+            label = locale('remove'),
             onSelect = function()
                 pb.DeleteObjectNetwork(netid)
                 TriggerServerEvent("pb-boombox:server:removesound", netid, id)
@@ -48,7 +48,7 @@ local function UpdateBoxTarget(netid, coords, id)
         {
             name = "boombox_play_"..netid,
             icon = "fa-solid fa-play",
-            label = "Colocar Música",
+            label = locale('play_song'),
             onSelect = function()
                 PlaySong("music"..netid)
             end,
@@ -56,7 +56,7 @@ local function UpdateBoxTarget(netid, coords, id)
         {
             name = "boombox_stop_",
             icon = "fa-solid fa-stop",
-            label = "Parar Música",
+            label = locale('stop_song'),
             onSelect = function()
                 if xSound:soundExists("music"..netid) then
                     TriggerServerEvent("pb-boombox:server:stopsound", "music"..netid)
@@ -66,7 +66,7 @@ local function UpdateBoxTarget(netid, coords, id)
         {
             name = "boombox_pause_",
             icon = "fa-solid fa-pause",
-            label = "Pausar Música",
+            label = locale('pause_song'),
             onSelect = function()
                 if xSound:soundExists("music"..netid) then
                     TriggerServerEvent("pb-boombox:server:pausesound", "music"..netid)
@@ -76,7 +76,7 @@ local function UpdateBoxTarget(netid, coords, id)
         {
             name = "boombox_resume_",
             icon = "fa-solid fa-play",
-            label = "Retomar Música",
+            label = locale('resume_song'),
             onSelect = function()
                 if xSound:soundExists("music"..netid) then
                     TriggerServerEvent("pb-boombox:server:resumesound", "music"..netid)
@@ -86,7 +86,7 @@ local function UpdateBoxTarget(netid, coords, id)
         {
             name = "boombox_status_",
             icon = "fa-solid fa-volume-low",
-            label = "Mudar Status",
+            label = locale('change_status'),
             onSelect = function()
                 ChangeSong("music"..netid)
             end,

@@ -1,0 +1,12 @@
+{
+    "music_def": "Music Defenitions",
+    "music_link": "Music Link",
+    "volume": "Volume",
+    "distance": "Distance",
+    "remove": "Remove BoomBox",
+    "play_song": "Play Song",
+    "stop_song": "Stop Song",
+    "pause_song": "Pause Song",
+    "resume_song": "Resume Song",
+    "change_status": "Change Status"
+}

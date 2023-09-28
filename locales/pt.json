@@ -1,0 +1,12 @@
+{
+    "music_def": "Definições Musica",
+    "music_link": "Link Música",
+    "volume": "Volume",
+    "distance": "Distância",
+    "remove": "Remover Coluna",
+    "play_song": "Colocar Música",
+    "stop_song": "Parar Música",
+    "pause_song": "Pausar Música",
+    "resume_song": "Retomar Música",
+    "change_status": "Mudar Status"
+}
