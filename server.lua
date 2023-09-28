@@ -3,11 +3,13 @@ local id = 1
 local xSound = exports.xsound
 
 RegisterNetEvent("pb-boombox:server:updatetarget")
-AddEventHandler("pb-boombox:server:updatetarget", function(netid, coords)
+AddEventHandler("pb-boombox:server:updatetarget", function(netid, coords, heading)
     TriggerClientEvent("pb-boombox:client:updatetarget", -1, netid, coords, tostring("boombox_"..id))
     boombox["boombox_"..id] = {
         netid = netid,
+        id = id,
         coords = coords,
+        heading = heading
     }
     id = id + 1
 end)
@@ -41,9 +43,9 @@ AddEventHandler("pb-boombox:server:resumesound", function(musicId)
 end)
 
 RegisterNetEvent("pb-boombox:server:removesound")
-AddEventHandler("pb-boombox:server:removesound", function(netid, id)
-    xSound:Destroy(-1, "music"..netid)
-    TriggerClientEvent("pb-boombox:client:deletetarget", -1, netid, id)
+AddEventHandler("pb-boombox:server:removesound", function(id)
+    xSound:Destroy(-1, "music"..id)
+    TriggerClientEvent("pb-boombox:client:deletetarget", -1, id)
     boombox[id] = nil
 end)
 
