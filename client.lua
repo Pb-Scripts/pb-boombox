@@ -1,7 +1,7 @@
 local xSound = exports.xsound
 local targetList = {}
 
-pb.locale()
+pb.locales()
 
 local function PlaySong(musicId)
     local input = pb.inputDialog(locale('music_def'), {
@@ -47,13 +47,8 @@ local function UpdateBoxTarget(netid, coords, id)
             label = locale('remove'),
             onSelect = function()
                 pb.DeleteObjectNetwork(netid)
-<<<<<<< HEAD
                 TriggerServerEvent("pb-boombox:server:removesound", id)
                 TriggerEvent("pb-boombox:client:OnBoxRemove", netid, id)
-=======
-                TriggerServerEvent("pb-boombox:server:removesound", netid, id)
-                TriggerEvent("pb-boombox:client:OnBoxRemove")
->>>>>>> 067d1c40e50365c2db2279ea46d686660acd5dae
             end,
         },
         {
